@@ -10,9 +10,10 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      tltle: 'Output management'
+      title: 'Output management'
     }),
     new CleanWebpackPlugin(['dist'])
   ],
