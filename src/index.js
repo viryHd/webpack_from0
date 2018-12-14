@@ -1,5 +1,9 @@
 import cube from './math';
+import _ from 'lodash';
 
+console.log(
+  _.join(['Anotherdsfdsafff', 'moduledsfdasf', 'lsadfdasfoaded!'], ' ')
+);
 if(process.env.NODE_ENV !== 'production'){
   console.log('Looks Like we!!!!');
 }
