@@ -1,23 +1,15 @@
-import _ from 'lodash'
-import './style.css'
-import printMe from './print.js'
+var math = require('./math');
+var cube = math.cube
 
+if(process.env.NODE_ENV !== 'production'){
+  console.log('Looks Like we!!!!');
+}
 function component() { 
-  let element = document.createElement('div');
-  element.innerHTML = _.join(['hello', 'webpack'], '');
-  element.classList.add('hello');
-  let btn = document.createElement('button');
-  btn.innerHTML = 'click me';
-  btn.onclick = printMe;
-  element.appendChild(btn)
-
+  var element = document.createElement('pre');
+  element.innerHTML = [
+    'hello webpack',
+    '5 cubed is equal to '+ cube(5)
+  ].join('\n\n')
   return element;
  }
  document.body.appendChild(component());
-
- if(module.hot){
-   module.hot.accept('./print.js', function(){
-     console.log('Accepting the updated printMe module!');
-     printMe();
-   })
- }
