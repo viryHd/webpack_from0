@@ -8,7 +8,7 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js",
-    "server": "webpack-dev-server --hot"
+    "hot": "webpack-dev-server --hot"
   },
   "keywords": [],
   "author": "",
