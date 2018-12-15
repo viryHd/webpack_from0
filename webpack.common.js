@@ -4,24 +4,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
-    another: './src/another.js'
+    app: './src/index.js'
   },
   output: {
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new CleanWebpackPlugin('[dist]'),
+    new CleanWebpackPlugin(['dist'], {
+      root: __dirname
+    }),
     new HtmlWebpackPlugin({
       title: 'Production'
     })
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  },
   module: {
     rules: [
       {
@@ -37,7 +34,8 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            include: [path.resolve(__dirname, 'src')]
+            include: [path.resolve(__dirname, 'src')],
+            plugins: ["@babel/plugin-syntax-dynamic-import"]
           }
         }
       }
